@@ -37,9 +37,14 @@
 
 <body>
 	<div id="map"></div>
-	<script type="text/javascript" src="geojson/France.js"></script>
-	<script type="text/javascript" src="geojson/departements.geojson"></script>
 	<script>
+
+		var markerfal = L.icon({
+			iconUrl: '../images/marker_icon2.png',
+			iconSize:     [35, 20], // size of the icon
+			iconAnchor:   [20, 1], // point of the icon which will correspond to marker's location
+			popupAnchor:  [17, 1] // point from which the popup should open relative to the iconAnchor
+		});
 
 		var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -53,8 +58,8 @@
 		});
 
 		var map = L.map('map', {
-			center: [46.5, 3.00],
-			zoom: 6,
+			center: [46.5, 2.75],
+			zoom: 5,
 			layers: [osm],
 		});
 
@@ -62,24 +67,64 @@
 		map.getPane('labels').style.zIndex = 650;
 		map.getPane('labels').style.pointerEvents = 'none';
 
-		France_map = L.geoJson(France);
-		France_map.eachLayer(function (layer) {
-			layer.bindPopup(layer.feature.properties.name);
-		});
-
 
 		var baseMaps = {
 			"OpenStreetMap": osm,
 			"CartoDB_Positron": CartoDB_Positron,
 		};
 
-		var overlays = {
-			"France": France_map
-		};
+		var overlays = {};
 
 		//Faire carte des caricatures
 
-		L.control.layers(baseMaps, overlays).addTo(map);
+		var layerControl = L.control.layers(baseMaps, overlays).addTo(map);
+
+		function featureName(properties, fallback) {
+			if (!properties) {
+				return fallback;
+			}
+			return properties.nom || properties.name || properties.Nom || properties.nom_dep || fallback;
+		}
+
+		fetch('geojson/departements.geojson')
+			.then(function (response) {
+				if (!response.ok) {
+					throw new Error('Impossible de charger les départements (' + response.status + ')');
+				}
+				return response.json();
+			})
+			.then(function (departementsData) {
+				var departementsLayer = L.geoJSON(departementsData, {
+					onEachFeature: function (feature, layer) {
+						layer.bindTooltip(featureName(feature.properties, 'Département inconnu'), { sticky: true });
+					}
+				});
+				overlays['Départements'] = departementsLayer;
+				layerControl.addOverlay(departementsLayer, 'Départements');
+			})
+			.catch(function (error) {
+				console.error(error);
+			});
+
+		fetch('geojson/regions.geojson')
+			.then(function (response) {
+				if (!response.ok) {
+					throw new Error('Impossible de charger les régions (' + response.status + ')');
+				}
+				return response.json();
+			})
+			.then(function (regionsData) {
+				var regionsLayer = L.geoJSON(regionsData, {
+					onEachFeature: function (feature, layer) {
+						layer.bindTooltip(featureName(feature.properties, 'Région inconnue'), { sticky: true });
+					}
+				});
+				overlays['Régions'] = regionsLayer;
+				layerControl.addOverlay(regionsLayer, 'Régions');
+			})
+			.catch(function (error) {
+				console.error(error);
+			});
 
 		$.get('./data.csv', function (csvString) {
 
@@ -89,7 +134,8 @@
 				var row = data[i];
 
 				var marker = L.marker([row.Latitude, row.Longitude], {
-					opacity: 1
+					opacity: 1,
+					icon: markerfal
 				}).bindPopup("<strong>" + row.Nom_Ville + "</strong></br>Association Falucharde: " + row.Asso + " (" + row.Asso_Desc + ")" + "</br>Nom du Congrès: " + row.Congres);
 
 				marker.addTo(map);
