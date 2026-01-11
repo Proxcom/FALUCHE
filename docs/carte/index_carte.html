@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Prox Acom">
 	<title>FALUCHE</title>
-	<link rel="icon" type="image/x-icon" href="images/faluche-stadium_2.png">
+	<link rel="icon" type="image/x-icon" href="/assets/images/faluche-stadium.sticker.boxed.png">
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
 	 crossorigin="" />
@@ -126,7 +126,7 @@
 				console.error(error);
 			});
 
-		$.get('./data.csv', function (csvString) {
+		$.get('/assets/data/carte.csv', function (csvString) {
 
 			var data = Papa.parse(csvString, { header: true, dynamicTyping: true }).data;
 
@@ -149,7 +149,7 @@
 		}).addTo(this.map);
 
 		map.attributionControl.setPrefix(
-			'<a href="https://github.com/AtlosPrime/FALUCHE" target="_blank">Code source</a>'
+			'<a href="https://github.com/Proxcom/FALUCHE" target="_blank">Code source</a>'
 		);
 
 	</script>
