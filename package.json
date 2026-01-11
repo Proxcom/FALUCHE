@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "dev": "http-server . -p 8888 -c-1"
+        "dev": "http-server ./docs/ -p 8888 -c-1"
     },
     "dependencies": {
         "http-server": "^14.1.1"
