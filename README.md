@@ -2,8 +2,8 @@
 
 <br/>
 <div align="center">
-  <a href="docs/faluche-stadium.png">
-    <img src="images/faluche-stadium_2.png" alt="Logo" width="100" height="100">
+  <a href="docs/images/faluche-stadium.png">
+    <img src="docs/images/faluche-stadium_2.png" alt="Logo" width="100" height="100">
   </a>
 <h3 align="center">FALUCHE</h3>
   <p align="center">
