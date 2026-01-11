@@ -2,8 +2,8 @@
 
 <br/>
 <div align="center">
-  <a href="docs/images/faluche-stadium.png">
-    <img src="docs/images/faluche-stadium_2.png" alt="Logo" width="100" height="100">
+  <a href="docs/assets/images/faluche-stadium.sticker.boxed.png">
+    <img src="docs/assets/images/faluche-stadium.sticker.boxed.png" alt="Logo" width="100" height="100">
   </a>
 <h3 align="center">FALUCHE</h3>
   <p align="center">
@@ -25,7 +25,7 @@ Le but étant de convenir à tout le monde, en proposant à l'avenir TOUTES les 
 Partie Carte:
 - [X] Commencer le dévelopemment de la carte
 	- [X] Optimiser le placements des markers 
-		- [X] Compléter le ([CSV](https://github.com/AtlosPrime/FALUCHE/blob/main/data.csv)) des villes|assos|congres
+		- [X] Compléter le ([CSV](https://github.com/Proxcom/FALUCHE/blob/main/data.csv)) des villes|assos|congres
 		- [ ] Rajouter la fonctionnalité de désactiver les markers des associations faluchardes
 		- [ ] Rajouter la fonctionnalité d'avoir un historique des congrès
 		- [ ] Rajouter les filières / croix dans la ville 
@@ -52,9 +52,9 @@ Partie Front-End
 ## Licence
 
 ## Contact
-AtlosPrime - Atlos@outlook.fr
+Proxcom - Atlos@outlook.fr
 
-Lien du projet : [https://github.com/AtlosPrime/FALUCHE](https://github.com/AtlosPrime/FALUCHE)
+Lien du projet : [https://github.com/Proxcom/FALUCHE](https://github.com/Proxcom/FALUCHE)
 
 ## Remerciements
 
