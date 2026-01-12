@@ -1,91 +1,19 @@
-<!DOCTYPE html>
 <html>
-
-<head>
-    <title>FALUCHERIE</title>
-
-    <meta charset="UTF-8" />
-    <meta name="description" content=" Simulation de FALUCHE et lexique des particularités">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Prox Acom">
-    
-    <link rel="icon" type="image/x-icon" href="/assets/images/faluche-stadium.sticker.boxed.png">
-
-    <link rel="stylesheet" type="text/css" href="/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/css/header.css" />
-</head>
-
-<body>
-    <header>
-        <div class="menu">
-            <input id="menu-items-toggle" type="checkbox">
-
-            <!--  -->
-
-            <label class="menu-button" for="menu-items-toggle">
-                <!-- <img src="/assets/images/ui/menu.icon.svg" height="75%"> -->
-            </label>
-
-            <!--  -->
-
-            <ul class="menu-items">
-                <li class="item"><a href="index.html">Acceuil</a></li>
-                <li class="item"><a href="carte/index_carte.html">Carte</a></li>
-                <li class="item"><a href="index_genealogie.html">Généalogie</a></li>
-                <li class="item"><a href="">Génération 2D</a></li>
-                <li class="item"><a href="">Génération 3D</a></li>
-                <li class="item"><a href="">Liens Utiles</a></li>
-                <li class="item"><a href="">A propos...</a></li>
-            </ul>
-        </div>
-
-        <span class="space"></span>
-
-        <img src="/assets/images/faluche-stadium.sticker.boxed.png" height="100%">
+    <head>
         
-        <span class="space"></span>
-        
-        <div class="title">Falucherie</div>
-
-        <!-- <span class="space"></span>
-        <span class="vertical-separator"></span>
-        <span class="space"></span> -->
-    </header>
+    </head>
 
     <!--  -->
 
-    <main>
-        <div class="container">
-            <div class="logo-box">
-                <a href="/">
-                    
-                </a>
-            </div>
-            
-        </div>
-        <br><br><br><br><br><br><br><br><br>
-        <div>
-            Carte
-            <div class="iframe-wrapper">
-                <iframe id="inlineFrameExample" class="responsive-iframe" title="Carte interactive"
-                    src="carte/index_carte.html"></iframe>
-            </div>
-            <p>Une question? Une suggestion? Une contribution? Contacte moi
-                <A HREF="mailto:atlos@outlook.fr">ici</A>
-            </p>
-        </div>
-    </main>
+    <body>
+        <template data-type="import" data-src="/templates/base.html">
+            <slot name="main-content">
+                
+            </slot>
+        </template>
 
-    <!--  -->
+        <!--  -->
 
-    <footer>
-        <p>
-            <i>FALUCHE |
-                <a href="https://github.com/Proxcom/FALUCHE" target="_blank">Code source sur Github</a> |
-                Proxcom
-            </i>
-        </p>
-    </footer>
-</body>
-
+        <script src="/js/templates.js"></script>
+    </body>
 </html>
