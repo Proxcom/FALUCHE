@@ -29,12 +29,22 @@ body header {
 
 /*  */
 
-body header > span.space::after {
+body header span.space {
+    background: none;
+    
+    color: transparent;
+}
+
+/*  */
+
+body header span.space::after {
     content: '.';
     user-select: none;
 
     position: relative;
     display: inline-block;
+
+    background: none;
 
     color: transparent;
 
@@ -43,7 +53,7 @@ body header > span.space::after {
 
 /*  */
 
-body header > span.vertical-separator {
+body header span.vertical-separator {
     position: relative;
     display: inline-block;
 
@@ -55,12 +65,21 @@ body header > span.vertical-separator {
 
 /*  */
 
-body header > .title {
-    margin: 0;
+body header .title {
+    user-select: none;
 
-    background: linear-gradient(120deg, #ffe066 0%, #ffadad 45%, #ffd6a5 100%);
-    background-size: 200% 200%;
-    background-clip: text;
+    position: relative;
+    display: flex;
+
+    flex-direction: row;
+    
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
 
     font-family: 'Consolas', 'Montserrat', sans-serif;
     font-size: larger;
@@ -76,15 +95,36 @@ body header > .title {
     /* animation: TitleGlow 12s ease-in-out infinite; */
 }
 
+body header .title .content {
+    position: relative;
+    display: flex;
+
+    flex-direction: row;
+    
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    height: 100%;
+
+    text-decoration: none;
+}
+
+body header .title .content .text {
+    background: linear-gradient(120deg, #ffe066 0%, #ffadad 45%, #ffd6a5 100%);
+    background-size: 200% 200%;
+    background-clip: text;
+}
+
 /*  */
 
-body header > #menu-items-toggle {
+body header #menu-items-toggle {
     display: none;
 }
 
 /*  */
 
-body header > .menu-button {
+body header .menu-button {
     position: relative;
     display: flex;
 
@@ -108,7 +148,7 @@ body header > .menu-button {
     cursor: pointer;
 }
 
-body:has(#menu > #menu-items-toggle:checked) header > .menu-button {
+body:has(#menu > #menu-items-toggle:checked) header .menu-button {
     background-image: url(/assets/images/ui/cross.icon.svg);
 }
 

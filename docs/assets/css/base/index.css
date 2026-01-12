@@ -8,12 +8,16 @@
 /*  */
 
 body {
+    width: 100%;
+    height: 100%;
+
     margin: 0;
+
+    background-color: var(--theme-background-color);
 
     font-family: 'Montserrat', sans-serif;
 
-    width: 100%;
-    height: 100%;
+    color: var(--color);
 }
 
 /*  */
@@ -31,6 +35,14 @@ body {
     height: 100%;
 }
 
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
 .flex-column {
     flex-direction: column;
 }
@@ -39,6 +51,19 @@ body {
     flex-direction: row;
 }
 
+.flex-centered {
+    justify-content: center;
+    align-items: center;
+}
+
 .auto-overflow {
     overflow: auto;
+}
+
+.no-text-decoration {
+    text-decoration: none;
+}
+
+.squared-aspect-ratio {
+    aspect-ratio: 1/1;
 }

@@ -1,4 +1,4 @@
-body > main > #frame {
+body main > #frame {
     position: relative;
     display: flex;
 
@@ -9,7 +9,7 @@ body > main > #frame {
     height: 100%;
 }
 
-body > main > #frame > iframe {
+body main > #frame > iframe {
     position: relative;
     display: block;
 

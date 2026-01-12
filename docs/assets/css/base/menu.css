@@ -1,4 +1,6 @@
 body #menu {
+    user-select: none;
+
     position: absolute;
     display: flex;
 

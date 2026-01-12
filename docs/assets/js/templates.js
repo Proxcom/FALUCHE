@@ -23,6 +23,9 @@ function markScriptElementsToReload(element) {
 }
 
 function markScriptElementsToPreventReload(element) {
+    if(!(element instanceof HTMLElement))
+        return;
+
     if(element instanceof HTMLScriptElement) {
         element.setAttribute("not-to-reload", "");
     }
@@ -116,8 +119,8 @@ async function process(dom) {
                 const slot_argument = slot_argument_map[slot_name];
 
                 if(slot_argument instanceof HTMLSlotElement) {
-                    for(child of Array.from(slot_argument.children).reverse()) {
-                        slot_parameter.insertAdjacentElement("afterend", child);
+                    for(child of Array.from(slot_argument.childNodes)) {
+                        slot_parameter.parentNode?.insertBefore(child, slot_parameter);
                         markScriptElementsToPreventReload(child);
                     }
 
@@ -155,8 +158,8 @@ async function process(dom) {
                 document.body.setAttribute(attribute.name, (current_value ? current_value + " " : "") + attribute.value);
             }
 
-            for(child of Array.from(template_body.children).reverse()) {
-                template_element.insertAdjacentElement("afterend", child);
+            for(child of Array.from(template_body.childNodes)) {
+                template_element.parentNode?.insertBefore(child, template_element);
             }
 
             template_element.remove();

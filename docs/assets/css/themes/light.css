@@ -10,9 +10,9 @@
     --lightmode-smooth-color: hsl(0, 0%, 95%);
     --lightmode-smooth-color-filter: brightness(95%);
     
-    --lightmode-color: #24292f;
+    --lightmode-color: #2f2424;
     
-    --lightmode-theme-background-color: hsl(191, 55%, 40%);
+    --lightmode-theme-background-color: hsl(60, 56%, 91%);
     --lightmode-content-background-color: hsl(191, 1.95%, 97.5%);
 }
 
