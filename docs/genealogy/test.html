@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arbre Généalogique avec d3.js</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <br><br><br><br><br>
+    <svg width="1600" height="800"></svg>
+    <script>
+        // Données de l'arbre généalogique
+        const treeData = {
+            name: "Vous",
+            children: [
+                {
+                    name: "Père",
+                    children: [
+                        {
+                            name: "Grand-père Paternel",
+                        },
+                        {
+                            name: "Grand-mère Paternelle",
+                        },
+                    ],
+                },
+                {
+                    name: "Mère",
+                    children: [
+                        {
+                            name: "Grand-père Maternel",
+                        },
+                        {
+                            name: "Grand-mère Maternelle",
+                        },
+                    ],
+                },
+            ],
+        };
+
+        // Configuration de l'arbre
+        const width = 1200;
+        const height = 400;
+        const svg = d3.select("svg");
+
+        // Création de la hiérarchie des données
+        const root = d3.hierarchy(treeData);
+        const treeLayout = d3.tree().size([width, height]);
+        treeLayout(root);
+
+        // Dessin des liens
+        const links = root.links();
+        svg.selectAll("path.link")
+            .data(links)
+            .enter()
+            .append("path")
+            .attr("class", "link")
+            .attr("d", d => {
+                return `M${d.source.x},${d.source.y} L${d.target.x},${d.target.y}`;
+            });
+
+        // Dessin des nœuds
+        const nodes = root.descendants();
+        svg.selectAll("circle.node")
+            .data(nodes)
+            .enter()
+            .append("circle")
+            .attr("class", "node")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", 5);
+
+        // Ajout de textes aux nœuds
+        svg.selectAll("text.node-label")
+            .data(nodes)
+            .enter()
+            .append("text")
+            .attr("class", "node-label")
+            .attr("x", d => d.x)
+            .attr("y", d => d.y)
+            .attr("dy", "-15")
+            .attr("text-anchor", "middle")
+            .text(d => d.data.name);
+    </script>
+</body>
+</html>

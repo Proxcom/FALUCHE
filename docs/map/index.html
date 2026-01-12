@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/carte/main.css" />
+    </head>
+
+    <!--  -->
+
+    <body>
+        <template data-type="import" data-src="/templates/base.html">
+            <slot name="main-content">
+                <div id="frame">
+                    <iframe id="inlineFrameExample" class="responsive-iframe" title="Carte interactive" src="/map/embed.html"></iframe>
+                </div>
+            </slot>
+        </template>
+
+        <!--  -->
+
+        <script src="/js/templates.js"></script>
+    </body>
+</html>
