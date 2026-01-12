@@ -10,67 +10,75 @@
         
         <link rel="icon" type="image/x-icon" href="/assets/images/faluche-stadium.sticker.boxed.png" />
 
+        <link rel="stylesheet" type="text/css" href="/css/themes/light.css" />
+        <link rel="stylesheet" type="text/css" href="/css/themes/dark.css" />
+
         <link rel="stylesheet" type="text/css" href="/css/base/index.css" />
         <link rel="stylesheet" type="text/css" href="/css/base/header.css" />
+        <link rel="stylesheet" type="text/css" href="/css/base/menu.css" />
         <link rel="stylesheet" type="text/css" href="/css/base/main.css" />
         <link rel="stylesheet" type="text/css" href="/css/base/footer.css" />
     </head>
 
-    <body>
-        <header>
-            <div class="menu">
-                <input id="menu-items-toggle" type="checkbox">
-
-                <!--  -->
-
+    <body class="lightmode">
+        <div class="relative full flex-column">
+            <header>
                 <label class="menu-button" for="menu-items-toggle">
-                    <!-- <img src="/assets/images/ui/menu.icon.svg" height="75%"> -->
+                    <!-- <input class="menu-items-toggle" type="checkbox"> -->
                 </label>
 
+                <span class="space"></span>
+
+                <img src="/assets/images/faluche-stadium.sticker.boxed.png" height="100%">
+                
+                <span class="space"></span>
+                
+                <div class="title">Falucherie</div>
+
+                <!-- <span class="space"></span>
+                <span class="vertical-separator"></span>
+                <span class="space"></span> -->
+            </header>
+
+            <!--  -->
+
+            <div class="relative flex full flex-row">
+                <div class="relative full auto-overflow">
+                    <main>
+                        <slot name="main-content"></slot>
+                    </main>
+
+                    <!--  -->
+
+                    <footer>
+                        <p>Une question? Une suggestion? Une contribution? Contacte moi
+                            <A HREF="mailto:atlos@outlook.fr">ici</A>
+                        </p>
+                        <p>
+                            <i>FALUCHE |
+                                <a href="https://github.com/Proxcom/FALUCHE" target="_blank">Code source sur Github</a> |
+                                Proxcom
+                            </i>
+                        </p>
+                    </footer>
+                </div>
+
                 <!--  -->
 
-                <ul class="menu-items">
-                    <li class="item"><a href="/">Acceuil</a></li>
-                    <li class="item"><a href="/map">Carte</a></li>
-                    <li class="item"><a href="/genealogy">Généalogie</a></li>
-                    <li class="item"><a href="/modeling/2d">Modélisation 2D</a></li>
-                    <li class="item"><a href="/modeling/3d">Modélisation 3D</a></li>
-                    <li class="item"><a href="/useful-links">Liens Utiles</a></li>
-                    <li class="item"><a href="/about">A propos...</a></li>
-                </ul>
+                <div id="menu">
+                    <input id="menu-items-toggle" type="checkbox">
+
+                    <ul class="menu-items">
+                        <li class="item"><a href="/">Acceuil</a></li>
+                        <li class="item"><a href="/map">Carte</a></li>
+                        <li class="item"><a href="/genealogy">Généalogie</a></li>
+                        <li class="item"><a href="/modeling/2d">Modélisation 2D</a></li>
+                        <li class="item"><a href="/modeling/3d">Modélisation 3D</a></li>
+                        <li class="item"><a href="/useful-links">Liens Utiles</a></li>
+                        <li class="item"><a href="/about">A propos...</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <span class="space"></span>
-
-            <img src="/assets/images/faluche-stadium.sticker.boxed.png" height="100%">
-            
-            <span class="space"></span>
-            
-            <div class="title">Falucherie</div>
-
-            <!-- <span class="space"></span>
-            <span class="vertical-separator"></span>
-            <span class="space"></span> -->
-        </header>
-
-        <!--  -->
-
-        <main>
-            <slot name="main-content"></slot>
-        </main>
-
-        <!--  -->
-
-        <footer>
-            <p>Une question? Une suggestion? Une contribution? Contacte moi
-                <A HREF="mailto:atlos@outlook.fr">ici</A>
-            </p>
-            <p>
-                <i>FALUCHE |
-                    <a href="https://github.com/Proxcom/FALUCHE" target="_blank">Code source sur Github</a> |
-                    Proxcom
-                </i>
-            </p>
-        </footer>
+        </div>
     </body>
 </html>

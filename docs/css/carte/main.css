@@ -1,20 +1,24 @@
-body > main > #frame {
+body main > #frame {
+    --inner-padding: 2em;
+    --border-radius: 1em;
+
     position: relative;
     display: flex;
 
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 
     width: 100%;
     height: 100%;
 }
 
-body > main > #frame > iframe {
+body main > #frame > iframe {
     position: relative;
     display: block;
 
-    width: 100%;
-    height: 100%;
+    width: calc(100% - var(--inner-padding));
+    height: calc(100% - var(--inner-padding));
 
-    border: none;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
 }

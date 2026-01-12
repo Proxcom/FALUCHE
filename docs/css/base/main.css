@@ -1,9 +1,7 @@
-body > main {
+body main {
     position: relative;
-    display: flex;
+    display: block;
 
     width: 100%;
-    height: calc(100% - var(--header-size));
-
-    margin-top: var(--header-size);
+    height: 100%;
 }

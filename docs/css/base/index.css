@@ -1,6 +1,8 @@
 :root {
     --header-size: 5em;
     --header-padding: 1em;
+
+    --menu-padding: 1em;
 }
 
 /*  */
@@ -12,4 +14,31 @@ body {
 
     width: 100%;
     height: 100%;
+}
+
+/*  */
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.auto-overflow {
+    overflow: auto;
 }
