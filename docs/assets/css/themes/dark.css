@@ -1,0 +1,36 @@
+.darkmode { --none: none; }
+
+/*  */
+
+:root {
+    --darkmode-background-color: #000;
+
+    --darkmode-border-color: hsl(212, 12%, 21%);
+    --darkmode-border-color-filter: brightness(21%);
+    --darkmode-smooth-color: hsl(212, 12%, 10.5%);
+    --darkmode-smooth-color-filter: brightness(10.5%);
+    
+    --darkmode-color: #c9d1d9;
+    
+    --darkmode-theme-background-color: hsl(191, 55%, 15%);
+    --darkmode-content-background-color: hsl(191, 55%, 2.5%);
+}
+
+:root:has(body.darkmode) {
+    --background-color: var(--darkmode-background-color);
+    
+    --border-color: var(--darkmode-border-color);
+    --border-color-filter: var(--darkmode-border-color-filter);
+    --smooth-color: var(--darkmode-smooth-color);
+    
+    --color: var(--darkmode-color);
+    
+    --theme-background-color: var(--darkmode-theme-background-color);
+    --content-background-color: var(--darkmode-content-background-color);
+}
+
+/*  */
+
+body.darkmode .theme-light {
+    display: none;
+}

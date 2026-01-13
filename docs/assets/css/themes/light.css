@@ -1,0 +1,36 @@
+.lightmode { --none: none; }
+
+/*  */
+
+:root {
+    --lightmode-background-color: #fff;
+    
+    --lightmode-border-color: #afafaf;
+    --lightmode-border-color-filter: brightness(69%);
+    --lightmode-smooth-color: hsl(0, 0%, 95%);
+    --lightmode-smooth-color-filter: brightness(95%);
+    
+    --lightmode-color: #2f2424;
+    
+    --lightmode-theme-background-color: hsl(60, 56%, 91%);
+    --lightmode-content-background-color: hsl(191, 1.95%, 97.5%);
+}
+
+:root:has(body.lightmode) {
+    --background-color: var(--lightmode-background-color);
+    
+    --border-color: var(--lightmode-border-color);
+    --border-color-filter: var(--lightmode-border-color-filter);
+    --smooth-color: var(--lightmode-smooth-color);
+    
+    --color: var(--lightmode-color);
+    
+    --theme-background-color: var(--lightmode-theme-background-color);
+    --content-background-color: var(--lightmode-content-background-color);
+}
+
+/*  */
+
+body.lightmode .theme-dark {
+    display: none;
+}

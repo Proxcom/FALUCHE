@@ -1,8 +1,8 @@
 {
     "scripts": {
-        "dev": "http-server ./docs/ -p 8888 -c-1"
+        "dev": "node scripts/dev-server.js"
     },
-    "dependencies": {
-        "http-server": "^14.1.1"
+    "devDependencies": {
+        "live-server": "^1.2.2"
     }
 }

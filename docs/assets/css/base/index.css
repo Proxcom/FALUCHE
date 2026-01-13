@@ -1,0 +1,69 @@
+:root {
+    --header-size: 5em;
+    --header-padding: 1em;
+
+    --menu-padding: 1em;
+}
+
+/*  */
+
+body {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    background-color: var(--theme-background-color);
+
+    font-family: 'Montserrat', sans-serif;
+
+    color: var(--color);
+}
+
+/*  */
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.auto-overflow {
+    overflow: auto;
+}
+
+.no-text-decoration {
+    text-decoration: none;
+}
+
+.squared-aspect-ratio {
+    aspect-ratio: 1/1;
+}

@@ -23,6 +23,9 @@ function markScriptElementsToReload(element) {
 }
 
 function markScriptElementsToPreventReload(element) {
+    if(!(element instanceof HTMLElement))
+        return;
+
     if(element instanceof HTMLScriptElement) {
         element.setAttribute("not-to-reload", "");
     }
@@ -116,8 +119,8 @@ async function process(dom) {
                 const slot_argument = slot_argument_map[slot_name];
 
                 if(slot_argument instanceof HTMLSlotElement) {
-                    for(child of Array.from(slot_argument.children).reverse()) {
-                        slot_parameter.insertAdjacentElement("afterend", child);
+                    for(child of Array.from(slot_argument.childNodes)) {
+                        slot_parameter.parentNode?.insertBefore(child, slot_parameter);
                         markScriptElementsToPreventReload(child);
                     }
 
@@ -132,14 +135,31 @@ async function process(dom) {
             // 
 
             const template_head = container.children.item(0);
-            const template_body = container.children.item(1);
+
+            const template_head_attributes = Array.from(template_head.attributes);
+            for(let i = 0; i < template_head_attributes.length; ++i) {
+                const attribute = template_head_attributes[i];
+                const current_value = document.head.getAttribute(attribute.name);
+                
+                document.head.setAttribute(attribute.name, (current_value ? current_value + " " : "") + attribute.value);
+            }
 
             document.head.append(...template_head.childNodes);
 
-            const template_element_parent = template_element.parentNode;
+            // 
 
-            for(child of Array.from(template_body.children).reverse()) {
-                template_element.insertAdjacentElement("afterend", child);
+            const template_body = container.children.item(1);
+
+            const template_body_attributes = Array.from(template_body.attributes);
+            for(let i = 0; i < template_body_attributes.length; ++i) {
+                const attribute = template_body_attributes[i];
+                const current_value = document.body.getAttribute(attribute.name);
+                
+                document.body.setAttribute(attribute.name, (current_value ? current_value + " " : "") + attribute.value);
+            }
+
+            for(child of Array.from(template_body.childNodes)) {
+                template_element.parentNode?.insertBefore(child, template_element);
             }
 
             template_element.remove();
@@ -148,6 +168,7 @@ async function process(dom) {
 
             processMarkedScriptElements(document.head);
             
+            const template_element_parent = template_element.parentNode;
             if(template_element_parent)
                 processMarkedScriptElements(template_element_parent);
         }
